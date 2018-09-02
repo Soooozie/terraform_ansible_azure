@@ -1,3 +1,6 @@
 .vagrant/
 .credentials
 terraform.tfvars
+terraform
+terraform.zip
+.notes

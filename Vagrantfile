@@ -13,9 +13,14 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "centos/7"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
   config.vm.provision :shell, path: "provision_vagrant.sh"
 
-  # Disable automatic box update checking. If you disable this, then
+#  config.vm.provision "ansible_local" do |ansible|
+#    ansible.playbook = "main.yml"
+#    ansible.limit = "all,localhost"
+
+#  end  # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false

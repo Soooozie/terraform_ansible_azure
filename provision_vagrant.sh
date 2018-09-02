@@ -16,8 +16,6 @@ pip install --upgrade pip
 
 python -m pip --version
 
-pip install ansible[azure]
-
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
 sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
@@ -40,21 +38,19 @@ mkdir ~/.azure
 
 mv sync/.credentials ~/.azure/credentials
 
-rm -rf sync/.credentials
-
 pip install "pywinrm>=0.3.0"
 
-pip install azure-common --upgrade
+pip install ansible[azure]
 
 pip install msrestazure --upgrade
 
 yum install wget unzip -y
 
-cd sync/
+cd sync
 
-wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
+#wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
 
-unzip terraform*
+#unzip terraform_*
 
 #rm -f terraform_*
 
@@ -67,3 +63,5 @@ ln -s /home/vagrant/sync/terraform terraform
 cd /home/vagrant/sync/
 
 source /home/vagrant/.bashrc
+
+terraform init 
